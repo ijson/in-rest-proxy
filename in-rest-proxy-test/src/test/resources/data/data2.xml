@@ -1,0 +1,19 @@
+<xml>
+    <appid>wx2421b1c4370ec43b</appid>
+    <attach>支付测试</attach>
+    <body>JSAPI支付测试</body>
+    <mch__id>10000100</mch__id>
+    <detail>&lt;![CDATA[{ &quot;goods_detail&quot;:[ { &quot;goods_id&quot;:&quot;iphone6s_16G&quot;, &quot;wxpay_goods_id&quot;:&quot;1001&quot;,
+        &quot;goods_name&quot;:&quot;iPhone6s 16G&quot;, &quot;quantity&quot;:1, &quot;price&quot;:528800, &quot;goods_category&quot;:&quot;123456&quot;,
+        &quot;body&quot;:&quot;苹果手机&quot; }, { &quot;goods_id&quot;:&quot;iphone6s_32G&quot;, &quot;wxpay_goods_id&quot;:&quot;1002&quot;,
+        &quot;goods_name&quot;:&quot;iPhone6s 32G&quot;, &quot;quantity&quot;:1, &quot;price&quot;:608800, &quot;goods_category&quot;:&quot;123789&quot;,
+        &quot;body&quot;:&quot;苹果手机&quot; } ] }]]&gt;</detail>
+    <nonce__str>413014f6-3f4d-4b66-9e65-c9188e1d7a50</nonce__str>
+    <notify__url>http://www.weixin.qq.com/wxpay/pay.php</notify__url>
+    <openid>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</openid>
+    <out__trade__no>f60c60c1-1d12-4ac8-80d3-6b40a377e74b</out__trade__no>
+    <spbill__create__ip>123.12.12.123</spbill__create__ip>
+    <total__fee>1</total__fee>
+    <trade__type>JSAPI</trade__type>
+    <sign>0194A8958F9F2A39FE5485AB39C3284F</sign>
+</xml>

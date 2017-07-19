@@ -1,0 +1,14 @@
+{
+    "Taobao":{
+        "address":"ip.taobao.com",
+        "serviceName":"淘宝开放平台",
+        "socketTimeOut":10000,
+        "connectionTimeOut":5000
+    },
+    "Weixin":{
+        "address":"https://api.mch.weixin.qq.com",
+        "serviceName":"微信支付平台",
+        "socketTimeOut":10000,
+        "connectionTimeOut":5000
+    }
+}
