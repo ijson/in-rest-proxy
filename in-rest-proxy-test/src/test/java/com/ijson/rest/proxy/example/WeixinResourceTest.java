@@ -21,7 +21,7 @@ public class WeixinResourceTest extends BaseTest {
     @Test
     public void unifiedorder() {
         Unifiedorder.Arg arg = new Unifiedorder.Arg();
-        //arg.setAppid("wx2421b1c4370ec43b");
+        arg.setAppid("wx2421b1c4370ec43b");
         arg.setAttach("支付测试");
         arg.setBody("JSAPI支付测试");
         arg.setMch_id("10000100");
@@ -36,7 +36,7 @@ public class WeixinResourceTest extends BaseTest {
         arg.setSign(getSign(buildParamMap(arg)));
         Unifiedorder.Result result = weixinResource.unifiedorder(arg);
 
-        System.out.println(result);
+        //System.out.println(result);
 
     }
 
