@@ -21,20 +21,17 @@ public @interface INField {
     /**
      * simple description
      *
-     * @return
      */
     String desc() default "";
 
     /**
      * remark information
      *
-     * @return
      */
     String remark() default "";
     /**
      * required
      *
-     * @return
      */
     boolean required() default false;
 

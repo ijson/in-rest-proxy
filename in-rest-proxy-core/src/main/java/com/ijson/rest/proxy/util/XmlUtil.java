@@ -27,11 +27,10 @@ public class XmlUtil {
      * 初始化XStream
      * 可支持某一字段可以加入CDATA标签
      * 如果需要某一字段使用原文
-     * 就需要在String类型的text的头加上"<![CDATA["和结尾处加上"]]>"标签，
+     * <code> 就需要在String类型的text的头加上"<![CDATA["和结尾处加上"]]>"标签， </code>
      * 以供XStream输出时进行识别
      *
      * @param isAddCDATA 是否支持CDATA标签
-     * @return
      */
     public static XStream initXStream(boolean isAddCDATA) {
         XStream xstream;
@@ -70,8 +69,6 @@ public class XmlUtil {
      *
      * @param obj 对象实例
      * @return String xml字符串
-     * @Title: toXml
-     * @Description: TODO
      */
     public static String toXml(Object obj) {
         XStream xstream = initXStream(true);// new XStream(new XppDriver(new XmlFriendlyNameCoder("-_", "_")));
@@ -103,7 +100,6 @@ public class XmlUtil {
     /**
      * 将传入xml文本转换成Java对象
      *
-     * @param xmlStr
      * @param cls    xml对应的class类
      * @return T   xml对应的class类的实例对象
      * <p>
@@ -161,11 +157,8 @@ public class XmlUtil {
      *
      * @param absPath  绝对路径
      * @param fileName 文件名
-     * @param cls
      * @return T
      * @throws Exception
-     * @Title: toBeanFromFile
-     * @Description: TODO
      */
     public static <T> T toBeanFromFile(String absPath, String fileName, Class<T> cls) throws Exception {
         String filePath = absPath + fileName;
