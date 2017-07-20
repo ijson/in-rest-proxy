@@ -13,27 +13,29 @@ import java.lang.annotation.Target;
 public @interface INField {
     /**
      * field name
-     *
-     * @return
+     * @return field name
      */
     String name() default "";
 
     /**
      * simple description
-     *
+     * @return desc
      */
     String desc() default "";
 
     /**
      * remark information
-     *
+     * @return remark
      */
     String remark() default "";
     /**
      * required
-     *
+     * @return required
      */
     boolean required() default false;
 
+    /**
+     * @return requiredMessage
+     */
     String requiredMessage() default "[ {0} ] is a required field";
 }

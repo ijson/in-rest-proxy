@@ -12,9 +12,6 @@ import java.lang.reflect.Field;
 
 /**
  * 输出xml和解析xml的工具类
- *
- * @ClassName:XmlUtil
- * @date :2012-9-29 上午9:51:28
  */
 @Slf4j
 public class XmlUtil {
@@ -23,15 +20,18 @@ public class XmlUtil {
     protected static String PREFIX_CDATA = "<![CDATA[";
     protected static String SUFFIX_CDATA = "]]>";
 
+
     /**
      * 初始化XStream
      * 可支持某一字段可以加入CDATA标签
      * 如果需要某一字段使用原文
-     * <code> 就需要在String类型的text的头加上"<![CDATA["和结尾处加上"]]>"标签， </code>
+     * <code> 就需要在String类型的text的头加上&quot;&lt;![CDATA[&quot;和结尾处加上&quot;]]&gt;&quot;标签， </code>
      * 以供XStream输出时进行识别
      *
      * @param isAddCDATA 是否支持CDATA标签
+     * @return XStream instance
      */
+
     public static XStream initXStream(boolean isAddCDATA) {
         XStream xstream;
         if (isAddCDATA) {
@@ -97,14 +97,17 @@ public class XmlUtil {
         return xstream.toXML(obj);
     }
 
+
     /**
+     * 调用的方法实例：PersonBean person=XmlUtil.toBean(xmlStr, PersonBean.class);
      * 将传入xml文本转换成Java对象
      *
+     * @param xmlStr 要转成对象的xml
      * @param cls    xml对应的class类
      * @return T   xml对应的class类的实例对象
-     * <p>
-     * 调用的方法实例：PersonBean person=XmlUtil.toBean(xmlStr, PersonBean.class);
      */
+
+
     public static <T> T toBean(String xmlStr, Class<T> cls) {
         //注意：不是new Xstream(); 否则报错：java.lang.NoClassDefFoundError: org/xmlpull/v1/XmlPullParserFactory
         XStream xstream = initXStream(true);
@@ -152,12 +155,14 @@ public class XmlUtil {
         return true;
     }
 
+
     /**
-     * 从xml文件读取报文
-     *
-     * @param absPath  绝对路径
+     *  从xml文件读取报文
+     * @param absPath 绝对路径
      * @param fileName 文件名
-     * @return T
+     * @param cls 类
+     * @param <T> 对象
+     * @return 转换后的对象
      * @throws Exception
      */
     public static <T> T toBeanFromFile(String absPath, String fileName, Class<T> cls) throws Exception {
