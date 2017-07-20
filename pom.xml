@@ -149,7 +149,7 @@
                 <version>2.18</version>
                 <configuration>
                     <forkCount>0</forkCount>
-                    <skipTests>true</skipTests>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>
@@ -178,6 +178,7 @@
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <encoding>UTF-8</encoding>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>
