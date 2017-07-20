@@ -4,10 +4,7 @@
     <groupId>com.ijson</groupId>
     <artifactId>in-rest-proxy</artifactId>
     <version>1.1-SNAPSHOT</version>
-    <modules>
-        <!--<module>in-rest-proxy-core</module>-->
-        <!--<module>in-rest-proxy-test</module>-->
-    </modules>
+
     <packaging>jar</packaging>
 
     <name>in-rest-proxy</name>
@@ -112,6 +109,25 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>${xstream.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
