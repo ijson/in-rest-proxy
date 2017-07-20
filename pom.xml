@@ -42,8 +42,8 @@
 
     <scm>
         <url>https://github.com/ijson/in-rest-proxy</url>
-        <connection>https://github.com/ijson/in-rest-proxy.git</connection>
-        <developerConnection>http://www.ijson.com</developerConnection>
+        <connection>scm:git:https://github.com/ijson/in-rest-proxy.git</connection>
+        <developerConnection>scm:git:https://github.com/ijson/in-rest-proxy.git</developerConnection>
     </scm>
 
 
@@ -103,7 +103,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
+                <version>1.5</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
