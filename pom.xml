@@ -3,7 +3,7 @@
 
     <groupId>com.ijson</groupId>
     <artifactId>in-rest-proxy</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <modules>
         <module>in-rest-proxy-core</module>
         <!--<module>in-rest-proxy-test</module>-->
@@ -43,7 +43,7 @@
         <url>https://github.com/ijson/in-rest-proxy</url>
         <connection>scm:git:https://github.com/ijson/in-rest-proxy.git</connection>
         <developerConnection>scm:git:https://github.com/ijson/in-rest-proxy.git</developerConnection>
-      <tag>in-rest-proxy-1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
 
