@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by cuiyongxu on 17/6/27.
  */
 
-class ConfigFactory {
+public class ConfigFactory {
 
     private Logger log = LoggerFactory.getLogger(ConfigFactory.class);
 
