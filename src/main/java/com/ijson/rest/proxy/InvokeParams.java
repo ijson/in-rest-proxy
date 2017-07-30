@@ -114,7 +114,7 @@ class InvokeParams {
         }
 
 
-        ServiceConfig config = ServiceConfigManager.getServiceConfig(serviceKey, invokeParams.headers.get(RestConstant.HeaderKey.Enterprise.getValue()));
+        ServiceConfig config = ServiceConfigManager.getServiceConfig(serviceKey);
         invokeParams.setServiceName(config.getServiceName());
         String serviceUrl = getResourceAddress(config, uri);
         invokeParams.resultClazz = method.getReturnType();

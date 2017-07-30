@@ -1,15 +1,17 @@
 package com.ijson.rest.proxy.util;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.security.MessageDigest;
 
+@Slf4j
 public class MD5 {
 
     private static final String hexDigits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
     private static String byteArrayToHexString(byte b[]) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++)
-            resultSb.append(byteToHexString(b[i]));
+        StringBuilder resultSb = new StringBuilder();
+        for (byte aB : b) resultSb.append(byteToHexString(aB));
         return resultSb.toString();
     }
 
@@ -25,10 +27,11 @@ public class MD5 {
     public static String MD5Encode(String origin) {
         String result = null;
         try {
-            result = new String(origin);
+            result = origin;
             MessageDigest md = MessageDigest.getInstance("MD5");
             result = byteArrayToHexString(md.digest(result.getBytes("UTF-8")));
-        } catch (Exception exception) {
+        } catch (Exception ignored) {
+            log.error("MD5 ERROR : {}", ignored);
         }
         return result;
     }

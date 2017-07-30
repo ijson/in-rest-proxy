@@ -61,7 +61,7 @@ public class ServiceGrayConfig {
         return this;
     }
 
-    public String getGrayName(String serviceName, String ea) {
+    String getGrayName(String serviceName, String ea) {
         if (grayConfig == null) {
             return null;
         }

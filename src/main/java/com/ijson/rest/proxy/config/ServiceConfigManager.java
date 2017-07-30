@@ -29,13 +29,8 @@ public class ServiceConfigManager {
         this.init();
     }
 
-    public static ServiceConfig getServiceConfig(String serviceKey, String ea) {
-        String grayServiceKey = serviceGrayConfig.getGrayName(serviceKey, ea);
-        return getGrayServiceConfig(serviceKey, grayServiceKey);
-    }
-
-    private static ServiceConfig getGrayServiceConfig(String serviceKey, String grayServiceKey) {
-        return serviceConfigMaps.get(serviceKey).getGrayServiceConfig(grayServiceKey);
+    public static ServiceConfig getServiceConfig(String serviceKey) {
+        return serviceConfigMaps.get(serviceKey);
     }
 
     private void init() {
@@ -49,7 +44,6 @@ public class ServiceConfigManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //serviceGrayConfig.setConfigName(configName).init();
     }
 
     private void initServiceKey(Map<String, RestServiceConfig> serviceConfigMaps) {
