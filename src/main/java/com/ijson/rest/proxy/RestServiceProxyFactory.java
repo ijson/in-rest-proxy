@@ -44,11 +44,6 @@ public class RestServiceProxyFactory {
     public void init() {
         configManager = new ServiceConfigManager(configName, (serviceConfigMaps) -> serviceConfigMaps.forEach((key, value) -> {
             restClient.createHttpClientForService(value);
-            Map<String, ServiceConfig> grayServiceConfigs = value.getGrayServices();
-            if (MapUtils.isNotEmpty(grayServiceConfigs)) {
-                grayServiceConfigs.forEach((grayKey, grayService) ->
-                        restClient.createHttpClientForService(grayService));
-            }
         }));
     }
 

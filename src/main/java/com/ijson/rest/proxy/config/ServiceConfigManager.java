@@ -19,9 +19,8 @@ import java.util.Map;
 @Slf4j
 public class ServiceConfigManager {
     private String configName;
-    private static volatile Map<String, RestServiceConfig> serviceConfigMaps = new HashMap<>();
+    private static volatile Map<String, ServiceConfig> serviceConfigMaps = new HashMap<>();
     private ILoadConfigHook loadConfigHook;
-    private static volatile ServiceGrayConfig serviceGrayConfig = new ServiceGrayConfig();
 
     public ServiceConfigManager(String configName, ILoadConfigHook loadConfigHook) {
         this.configName = configName;
@@ -36,7 +35,7 @@ public class ServiceConfigManager {
     private void init() {
         try {
             String content = ConfigFactory.getConfigToString(configName);
-            serviceConfigMaps = JsonUtil.fromJson(content, new TypeToken<Map<String, RestServiceConfig>>() {
+            serviceConfigMaps = JsonUtil.fromJson(content, new TypeToken<Map<String, ServiceConfig>>() {
             }.getType());
             initServiceKey(serviceConfigMaps);
             loadConfigHook.reload(serviceConfigMaps);
@@ -46,26 +45,17 @@ public class ServiceConfigManager {
         }
     }
 
-    private void initServiceKey(Map<String, RestServiceConfig> serviceConfigMaps) {
+    private void initServiceKey(Map<String, ServiceConfig> serviceConfigMaps) {
         if (MapUtils.isNotEmpty(serviceConfigMaps)) {
             serviceConfigMaps.forEach((key, serviceConfig) -> {
                 //设置url
                 serviceConfig.setAddress(UrlUtil.getServiceUrl(serviceConfig.getAddress()));
                 serviceConfig.setServiceKey(key);
-                if (MapUtils.isNotEmpty(serviceConfig.getGrayServices())) {
-                    serviceConfig.getGrayServices().forEach((serviceKey, grayServiceConfig) -> {
-                        grayServiceConfig.setServiceKey(serviceConfig.getGrayServiceKey(
-                                key, serviceKey
-                        ));
-//                      设置url
-                        grayServiceConfig.setAddress(UrlUtil.getServiceUrl(grayServiceConfig.getAddress()));
-                    });
-                }
             });
         }
     }
 
     public interface ILoadConfigHook {
-        void reload(Map<String, RestServiceConfig> configMap);
+        void reload(Map<String, ServiceConfig> configMap);
     }
 }
