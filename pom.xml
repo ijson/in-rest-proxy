@@ -239,7 +239,7 @@
                 <version>2.10.4</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <doctitle>WebMagic 0.7.2</doctitle>
+                    <doctitle>in-rest-proxy</doctitle>
                     <locale>en_US</locale>
                 </configuration>
                 <executions>
