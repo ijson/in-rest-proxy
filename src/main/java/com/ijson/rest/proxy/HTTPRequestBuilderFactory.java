@@ -15,7 +15,7 @@ public class HTTPRequestBuilderFactory {
         return RestProxyRequestBuilder.create(invokeParams.getMethodType()).build(invokeParams, codeC);
     }
 
-    enum RestProxyRequestBuilder implements HTTPRequestBuilder {
+    private enum RestProxyRequestBuilder implements HTTPRequestBuilder {
         GET {
             @Override
             public RequestBuilder build(InvokeParams invokeParams, AbstractRestCodeC codeC) {

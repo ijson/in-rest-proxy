@@ -7,7 +7,6 @@ import com.ijson.rest.proxy.config.ServiceConfigManager;
 import com.ijson.rest.proxy.exception.RestProxyConfigException;
 import com.ijson.rest.proxy.exception.RestProxyINFieldException;
 import com.ijson.rest.proxy.model.ServiceConfig;
-import com.ijson.rest.proxy.util.RestConstant;
 import lombok.Data;
 
 import java.lang.annotation.Annotation;
@@ -155,7 +154,7 @@ class InvokeParams {
     }
 
 
-    public static List<Field> getDeclaredField(Class<?> clazz) {
+    private static List<Field> getDeclaredField(Class<?> clazz) {
         List<Field> fieldList = Lists.newArrayList();
         while (clazz != null) {
             fieldList.addAll(Arrays.asList(clazz.getDeclaredFields()));
@@ -186,8 +185,8 @@ class InvokeParams {
         return serviceUrl;
     }
 
-    static String map2QueryParams(Map<String, String> map) {
-        StringBuffer sb = new StringBuffer("?");
+    private static String map2QueryParams(Map<String, String> map) {
+        StringBuilder sb = new StringBuilder("?");
         map.forEach((k, v) -> {
             sb.append(k).append("=").append(v).append("&");
         });

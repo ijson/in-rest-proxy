@@ -105,7 +105,7 @@ public class RestServiceProxyFactory {
         if (Strings.isNullOrEmpty(codec)) {
             throw new RestProxyInvokeException("codec init error ,please check  config ");
         }
-        AbstractRestCodeC rst = serviceCodeCMaps.computeIfAbsent(codec, key -> {
+        return serviceCodeCMaps.computeIfAbsent(codec, key -> {
             try {
                 log.info("init Codec :{}", codec);
                 return (AbstractRestCodeC) Class.forName(codec).newInstance();
@@ -113,7 +113,6 @@ public class RestServiceProxyFactory {
                 throw new RestProxyConfigException("codec init error:" + codec);
             }
         });
-        return rst;
     }
 
 

@@ -23,9 +23,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Simple Wrapper of HttpClient for FSI Protocol Created by liyiguang on 16/1/14.
- */
 @Slf4j
 public class RestClient {
 

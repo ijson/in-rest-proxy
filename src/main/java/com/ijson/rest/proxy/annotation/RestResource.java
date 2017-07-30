@@ -9,10 +9,13 @@ import java.lang.annotation.*;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface RestResource  {
-    String value() ;
+public @interface RestResource {
+    String value();
+
     String desc() default "";
-    String codec() ;
+
+    String codec();
+
     String contentType() default "";
 
 
