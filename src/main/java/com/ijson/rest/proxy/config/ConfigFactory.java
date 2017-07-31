@@ -32,7 +32,7 @@ public class ConfigFactory {
         return extMap;
     }
 
-    static String getConfigToString(String name) throws IOException {
+    public static String getConfigToString(String name) throws IOException {
         ConfigFactory factory = new ConfigFactory();
         Path path = factory.scanConfigPath();
         List<String> value = Files.readLines(new File(path.toFile().getPath() + File.separator + name), Charsets.UTF_8);
@@ -42,7 +42,7 @@ public class ConfigFactory {
     }
 
 
-    private static void setMap(ExtMap<String, Object> extMap, String extension) {
+    public static void setMap(ExtMap<String, Object> extMap, String extension) {
         if (Strings.isNullOrEmpty(extension)) return;
         Map<String, String> map = Splitter.on(",").trimResults().omitEmptyStrings().withKeyValueSeparator("=").split(extension);
         map.forEach((k, v) -> {
@@ -52,7 +52,7 @@ public class ConfigFactory {
     }
 
 
-    private Path scanConfigPath() {
+    public Path scanConfigPath() {
         Path basePath = scanProperty();
         if (basePath != null) {
             return basePath;
@@ -72,7 +72,7 @@ public class ConfigFactory {
         return new File(System.getProperty("java.io.tmpdir")).toPath();
     }
 
-    private Path scanProperty() {
+    public Path scanProperty() {
         String localCachePath = System.getProperty("config.path");
         if (!Strings.isNullOrEmpty(localCachePath)) {
             File f = new File(localCachePath);
@@ -82,7 +82,7 @@ public class ConfigFactory {
         return null;
     }
 
-    private String scanResource(String resource) {
+    public String scanResource(String resource) {
         try {
             Enumeration<URL> ps = Thread.currentThread().getContextClassLoader().getResources(resource);
             while (ps.hasMoreElements()) {
