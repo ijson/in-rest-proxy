@@ -110,6 +110,11 @@
             <artifactId>fastjson</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.ijson</groupId>
+            <artifactId>in-auto-config-zkclient</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

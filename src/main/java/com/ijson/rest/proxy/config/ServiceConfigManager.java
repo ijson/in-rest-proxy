@@ -1,6 +1,7 @@
 package com.ijson.rest.proxy.config;
 
 import com.google.gson.reflect.TypeToken;
+import com.ijson.config.ConfigFactory;
 import com.ijson.rest.proxy.model.ServiceConfig;
 import com.ijson.rest.proxy.util.JsonUtil;
 import com.ijson.rest.proxy.util.UrlUtil;
@@ -8,7 +9,6 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.MapUtils;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,16 +33,15 @@ public class ServiceConfigManager {
     }
 
     private void init() {
-        try {
-            String content = ConfigFactory.getConfigToString(configName);
-            serviceConfigMaps = JsonUtil.fromJson(content, new TypeToken<Map<String, ServiceConfig>>() {
-            }.getType());
-            initServiceKey(serviceConfigMaps);
-            loadConfigHook.reload(serviceConfigMaps);
-            log.info("log RestServiceProxyFactory {} ", configName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+         ConfigFactory.getConfig(configName,(config)->{
+             String content = new String(config.getContent());
+             serviceConfigMaps = JsonUtil.fromJson(content, new TypeToken<Map<String, ServiceConfig>>() {
+             }.getType());
+             initServiceKey(serviceConfigMaps);
+             loadConfigHook.reload(serviceConfigMaps);
+             log.info("log RestServiceProxyFactory {} ", configName);
+        });
+
     }
 
     private void initServiceKey(Map<String, ServiceConfig> serviceConfigMaps) {
