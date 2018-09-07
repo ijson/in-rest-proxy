@@ -1,22 +1,28 @@
 package com.ijson.rest.proxy.example;
 
 import com.ijson.rest.BaseTest;
+import com.ijson.rest.proxy.BeanFactory;
 import com.ijson.rest.proxy.example.model.Unifiedorder;
 import com.ijson.rest.proxy.example.resource.WeixinResource;
 import com.ijson.rest.proxy.util.MD5;
+
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.UUID;
 
 /**
  * Created by cuiyongxu on 17/7/16.
  */
 public class WeixinResourceTest extends BaseTest {
 
-    @Autowired
-    private WeixinResource weixinResource;
+    private WeixinResource weixinResource = BeanFactory.getBean(WeixinResource.class);
+
 
     @Test
     public void unifiedorder() {
@@ -26,9 +32,9 @@ public class WeixinResourceTest extends BaseTest {
         arg.setBody("JSAPI支付测试");
         arg.setMch_id("10000100");
         arg.setDetail("{ \"goods_detail\":[ { \"goods_id\":\"iphone6s_16G\", \"wxpay_goods_id\":\"1001\", \"goods_name\":\"iPhone6s 16G\", \"quantity\":1, \"price\":528800, \"goods_category\":\"123456\", \"body\":\"苹果手机\" }, { \"goods_id\":\"iphone6s_32G\", \"wxpay_goods_id\":\"1002\", \"goods_name\":\"iPhone6s 32G\", \"quantity\":1, \"price\":608800, \"goods_category\":\"123789\", \"body\":\"苹果手机\" } ] }");
-        arg.setNonce_str(UUID.randomUUID().toString().replace("-",""));
+        arg.setNonce_str(UUID.randomUUID().toString().replace("-", ""));
         arg.setOpenid("oUpF8uMuAJO_M2pxb1Q9zNjWeS6o");
-        arg.setOut_trade_no(UUID.randomUUID().toString().replace("-",""));
+        arg.setOut_trade_no(UUID.randomUUID().toString().replace("-", ""));
         arg.setTotal_fee(1);
         arg.setSpbill_create_ip("123.12.12.123");
         arg.setNotify_url("http://www.weixin.qq.com/wxpay/pay.php");

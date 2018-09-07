@@ -5,23 +5,20 @@ import com.ijson.rest.proxy.annotation.INField;
 import com.ijson.rest.proxy.exception.RestProxyINFieldException;
 import com.ijson.rest.proxy.util.XmlUtil;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.lang.reflect.Field;
 import java.text.MessageFormat;
 import java.util.UUID;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Created by cuiyongxu on 17/7/15.
  */
 @Slf4j
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-rest-proxy.xml")
 public class BaseTest {
 
     @Test

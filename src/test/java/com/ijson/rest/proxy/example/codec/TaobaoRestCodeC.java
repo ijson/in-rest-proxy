@@ -1,15 +1,15 @@
 package com.ijson.rest.proxy.example.codec;
 
-import com.alibaba.fastjson.JSONObject;
 import com.ijson.rest.proxy.codec.AbstractRestCodeC;
 import com.ijson.rest.proxy.example.model.BaseResult;
 import com.ijson.rest.proxy.exception.RestProxyBusinessException;
 import com.ijson.rest.proxy.util.JsonUtil;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by cuiyongxu on 17/3/6.
@@ -38,7 +38,7 @@ public class TaobaoRestCodeC extends AbstractRestCodeC {
 
     public boolean isJson(String jsonString) {
         try {
-            JSONObject.parse(jsonString);
+            JsonUtil.toJson(jsonString);
         } catch (Exception e) {
             return false;
         }

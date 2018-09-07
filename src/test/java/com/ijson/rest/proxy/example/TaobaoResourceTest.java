@@ -1,11 +1,13 @@
 package com.ijson.rest.proxy.example;
 
 import com.google.common.collect.Maps;
+
 import com.ijson.rest.BaseTest;
+import com.ijson.rest.proxy.BeanFactory;
 import com.ijson.rest.proxy.example.model.GetIP;
 import com.ijson.rest.proxy.example.resource.TaobaoResource;
+
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
@@ -15,8 +17,8 @@ import java.util.Map;
 
 public class TaobaoResourceTest extends BaseTest {
 
-    @Autowired
-    private TaobaoResource taobaoResource;
+
+    private TaobaoResource taobaoResource = BeanFactory.getBean(TaobaoResource.class);
 
 
     @Test()
