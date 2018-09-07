@@ -13,24 +13,30 @@ public class BeanFactory {
 
     }
 
+    private static synchronized BeanFactory getInstance() {
+        if (instance == null) {
+            instance = new BeanFactory();
+        }
+        return instance;
+    }
+
     private static RestServiceProxyFactory factory;
 
     private static String configName;
 
-    private void init() {
+    private synchronized void init() {
         if (factory == null) {
             factory = new RestServiceProxyFactory();
+            if (Strings.isNullOrEmpty(configName)) {
+                configName = "in-rest-proxy-config";
+            }
+            factory.setConfigName(configName);
+            factory.init();
         }
-        if (Strings.isNullOrEmpty(configName)) {
-            configName = "in-rest-proxy-config";
-        }
-        factory.setConfigName(configName);
-        factory.init();
     }
 
     public static <T> T getBean(Class<T> clazz) {
-        BeanFactory fa = new BeanFactory();
-        fa.init();
+        BeanFactory.getInstance().init();
         RestServiceProxyFactoryBean<T> bean = new RestServiceProxyFactoryBean<>();
         bean.setFactory(factory);
         bean.setType(clazz);
