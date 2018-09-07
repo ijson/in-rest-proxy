@@ -8,6 +8,9 @@ import lombok.Data;
 public class BeanFactory {
 
     private static BeanFactory instance;
+    private static RestServiceProxyFactory factory;
+    private static String configName;
+
 
     private BeanFactory() {
 
@@ -19,10 +22,6 @@ public class BeanFactory {
         }
         return instance;
     }
-
-    private static RestServiceProxyFactory factory;
-
-    private static String configName;
 
     private synchronized void init() {
         if (factory == null) {
