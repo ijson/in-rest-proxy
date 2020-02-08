@@ -12,7 +12,7 @@ Maven 地址
     <dependency>
       <groupId>com.ijson</groupId>
       <artifactId>in-rest-proxy</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
 
 # 使用方式
