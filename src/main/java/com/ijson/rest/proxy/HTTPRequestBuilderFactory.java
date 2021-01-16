@@ -16,6 +16,9 @@ public class HTTPRequestBuilderFactory {
     }
 
     private enum RestProxyRequestBuilder implements HTTPRequestBuilder {
+        /**
+         * get请求
+         */
         GET {
             @Override
             public RequestBuilder build(InvokeParams invokeParams, AbstractRestCodeC codeC) {

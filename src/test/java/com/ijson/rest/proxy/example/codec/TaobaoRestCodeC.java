@@ -16,10 +16,12 @@ import java.util.Map;
  */
 @Slf4j
 public class TaobaoRestCodeC extends AbstractRestCodeC {
+    @Override
     public <T> byte[] encodeArg(T obj) {
         return JsonUtil.toJson(obj).getBytes();
     }
 
+    @Override
     public <T> T decodeResult(int statusCode, Map<String, List<String>> headers, byte[] bytes, Class<T> clazz) {
         super.decodeResult(statusCode, headers, bytes, clazz);
         T ret = null;

@@ -30,7 +30,7 @@ class InvokeParams {
     /**
      * 请求服务器地址
      */
-    private String serviceIP;
+    private String serviceIp;
     /**
      * 方法路径
      */
@@ -122,10 +122,10 @@ class InvokeParams {
         invokeParams.resultClazz = method.getReturnType();
         invokeParams.setServiceUrl(serviceUrl);
         invokeParams.setMethodPath(uri);
-        invokeParams.setServiceIP(config.getAddress());
+        invokeParams.setServiceIp(config.getAddress());
         invokeParams.setCodec(codec);
 
-        invokeParams.serviceUrl = getServiceURL(serviceUrl, invokeParams.pathParams, invokeParams.queryParams);
+        invokeParams.serviceUrl = getServiceUrl(serviceUrl, invokeParams.pathParams, invokeParams.queryParams);
         String globContentType = restResource.contentType();
         if (!Strings.isNullOrEmpty(globContentType)) {
             invokeParams.headers.put("Content-Type", globContentType);
@@ -168,7 +168,7 @@ class InvokeParams {
 
     static Pattern p = Pattern.compile("(\\{[^{}]+\\})+");
 
-    private static String getServiceURL(String url, Map<String, String> pathParams, Map<String, String> queryParams) {
+    private static String getServiceUrl(String url, Map<String, String> pathParams, Map<String, String> queryParams) {
         String serviceUrl = url.replaceAll(" ", "");
         if (pathParams != null) {
             Matcher m = p.matcher(url);

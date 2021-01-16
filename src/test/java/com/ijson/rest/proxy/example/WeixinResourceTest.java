@@ -75,7 +75,7 @@ public class WeixinResourceTest extends BaseTest {
         //微信支付API秘钥
         //TODO
         buffer.append("key=" + "2RoetPJsPfftEwMJqIZJf1I0dXJybW90yetGLJoe9PJ");
-        String sign = MD5.MD5Encode(buffer.toString()).toUpperCase();
+        String sign = MD5.mD5Encode(buffer.toString()).toUpperCase();
         return sign;
     }
 }

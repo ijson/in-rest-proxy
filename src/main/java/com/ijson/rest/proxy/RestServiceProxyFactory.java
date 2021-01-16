@@ -8,13 +8,10 @@ import com.ijson.rest.proxy.codec.AbstractRestCodeC;
 import com.ijson.rest.proxy.config.ServiceConfigManager;
 import com.ijson.rest.proxy.exception.RestProxyConfigException;
 import com.ijson.rest.proxy.exception.RestProxyInvokeException;
-import com.ijson.rest.proxy.model.ServiceConfig;
 import com.ijson.rest.proxy.util.JsonUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.MapUtils;
 
-import java.io.IOException;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Constructor;
@@ -30,8 +27,8 @@ import java.util.Map;
 @Data
 public class RestServiceProxyFactory {
 
-    private Map<String, AbstractRestCodeC> serviceCodeCMaps = new HashMap<>();
-    private final static RestClient restClient = new RestClient();
+    private Map<String, AbstractRestCodeC> serviceCodeMaps = new HashMap<>();
+    private final static RestClient REST_CLIENT = new RestClient();
 
     private ServiceConfigManager configManager;
 
@@ -43,7 +40,7 @@ public class RestServiceProxyFactory {
 
     public void init() {
         configManager = new ServiceConfigManager(configName, (serviceConfigMaps) -> serviceConfigMaps.forEach((key, value) -> {
-            restClient.createHttpClientForService(value);
+            REST_CLIENT.createHttpClientForService(value);
         }));
     }
 
@@ -63,7 +60,7 @@ public class RestServiceProxyFactory {
             Object ret = null;
             Throwable throwable = null;
             try {
-                ret = restClient.invoke(serviceKey, invokeParams, codec);
+                ret = REST_CLIENT.invoke(serviceKey, invokeParams, codec);
             } catch (Throwable e) {
                 throwable = e;
             } finally {
@@ -105,7 +102,7 @@ public class RestServiceProxyFactory {
         if (Strings.isNullOrEmpty(codec)) {
             throw new RestProxyInvokeException("codec init error ,please check  config ");
         }
-        return serviceCodeCMaps.computeIfAbsent(codec, key -> {
+        return serviceCodeMaps.computeIfAbsent(codec, key -> {
             try {
                 log.info("init Codec :{}", codec);
                 return (AbstractRestCodeC) Class.forName(codec).newInstance();

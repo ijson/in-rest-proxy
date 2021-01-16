@@ -9,12 +9,13 @@ import java.lang.reflect.Type;
 /**
  * Created by cuiyongxu on 26/12/2016.
  */
-public abstract class JsonUtil {
+public class JsonUtil {
 
     private static Gson gson = new GsonBuilder().
             registerTypeAdapter(Double.class, (JsonSerializer<Double>) (src, typeOfSrc, context) -> {
-                if (src == src.longValue())
+                if (src == src.longValue()) {
                     return new JsonPrimitive(src.longValue());
+                }
                 return new JsonPrimitive(src);
             }).create();
     private static Gson withNullGson = new GsonBuilder().serializeNulls().create();

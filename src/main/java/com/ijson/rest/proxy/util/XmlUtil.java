@@ -28,15 +28,16 @@ public class XmlUtil {
      * <code> 就需要在String类型的text的头加上&quot;&lt;![CDATA[&quot;和结尾处加上&quot;]]&gt;&quot;标签， </code>
      * 以供XStream输出时进行识别
      *
-     * @param isAddCDATA 是否支持CDATA标签
+     * @param isAddCdata 是否支持CDATA标签
      * @return XStream instance
      */
 
-    public static XStream initXStream(boolean isAddCDATA) {
+    public static XStream initXstream(boolean isAddCdata) {
         XStream xstream;
-        if (isAddCDATA) {
+        if (isAddCdata) {
             xstream = new XStream(
                     new XppDriver() {
+                        @Override
                         public HierarchicalStreamWriter createWriter(Writer out) {
                             return new PrettyPrintWriter(out) {
                                 //修复__问题
@@ -71,7 +72,7 @@ public class XmlUtil {
      * @return String xml字符串
      */
     public static String toXml(Object obj) {
-        XStream xstream = initXStream(true);// new XStream(new XppDriver(new XmlFriendlyNameCoder("-_", "_")));
+        XStream xstream = initXstream(true);// new XStream(new XppDriver(new XmlFriendlyNameCoder("-_", "_")));
 
         // XStream xstream = new XStream(new XppDriver(new XmlFriendlyReplacer("-_", "_")));
         // XStream xstream=new XStream(new DomDriver()); //直接用jaxp dom来解释
@@ -110,7 +111,7 @@ public class XmlUtil {
 
     public static <T> T toBean(String xmlStr, Class<T> cls) {
         //注意：不是new Xstream(); 否则报错：java.lang.NoClassDefFoundError: org/xmlpull/v1/XmlPullParserFactory
-        XStream xstream = initXStream(true);
+        XStream xstream = initXstream(true);
         xstream.processAnnotations(cls);
         T obj = (T) xstream.fromXML(xmlStr);
         return obj;
@@ -124,7 +125,7 @@ public class XmlUtil {
      * @param fileName 文件名
      * @return boolean
      */
-    public static boolean toXMLFile(Object obj, String absPath, String fileName) {
+    public static boolean toXmlFile(Object obj, String absPath, String fileName) {
         String strXml = toXml(obj);
         String filePath = absPath + fileName;
         File file = new File(filePath);
@@ -145,12 +146,13 @@ public class XmlUtil {
             log.error("error:{}", e1);
             return false;
         } finally {
-            if (ous != null)
+            if (ous != null) {
                 try {
                     ous.close();
                 } catch (IOException e) {
                     log.error("error:{}", e);
                 }
+            }
         }
         return true;
     }
@@ -174,7 +176,7 @@ public class XmlUtil {
             throw new Exception("读{" + filePath + "}文件失败！", e);
         }
 
-        XStream xstream = initXStream(true);
+        XStream xstream = initXstream(true);
         xstream.processAnnotations(cls);
         T obj = null;
         try {

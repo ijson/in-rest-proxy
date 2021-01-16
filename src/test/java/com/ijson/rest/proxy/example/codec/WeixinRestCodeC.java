@@ -17,12 +17,14 @@ import java.util.Map;
 @Slf4j
 public class WeixinRestCodeC extends AbstractRestCodeC {
 
+    @Override
     public <T> byte[] encodeArg(T obj) {
         String str = XmlUtil.toXml(obj);
         log.info("Msg:{}", str);
         return str.getBytes();
     }
 
+    @Override
     public <T> T decodeResult(int statusCode, Map<String, List<String>> headers, byte[] bytes, Class<T> clazz) {
         T ret = null;
         try {
