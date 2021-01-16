@@ -27,6 +27,10 @@
         </license>
     </licenses>
 
+    <properties>
+        <zk.version>1.0.7-SNAPSHOT</zk.version>
+    </properties>
+
     <scm>
         <url>https://github.com/ijson/in-rest-proxy</url>
         <connection>scm:git:https://github.com/ijson/in-rest-proxy.git</connection>
@@ -114,7 +118,7 @@
         <dependency>
             <groupId>com.ijson.common</groupId>
             <artifactId>in-auto-config-zkclient</artifactId>
-            <version>1.0.6</version>
+            <version>${zk.version}</version>
         </dependency>
     </dependencies>
 
