@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.ijson.common</groupId>
         <artifactId>ijson-parent-pom</artifactId>
-        <version>1.0.8</version>
+        <version>1.0.9-SNAPSHOT</version>
     </parent>
 
     <groupId>com.ijson</groupId>
@@ -28,7 +28,7 @@
     </licenses>
 
     <properties>
-        <zk.version>1.0.7</zk.version>
+        <zk.version>1.0.8-SNAPSHOT</zk.version>
     </properties>
 
     <scm>
