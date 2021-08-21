@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.ijson.common</groupId>
         <artifactId>ijson-parent-pom</artifactId>
-        <version>1.0.9-SNAPSHOT</version>
+        <version>1.0.9</version>
     </parent>
 
     <groupId>com.ijson</groupId>
@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>in-rest-proxy</name>
-    <url>http://maven.apache.org</url>
+    <url>https://www.4klike.com;https://www.ijson.com;https://www.ijson.net;</url>
     <description>
         restful helper
     </description>
@@ -28,13 +28,13 @@
     </licenses>
 
     <properties>
-        <zk.version>1.0.8-SNAPSHOT</zk.version>
+        <zk.version>1.0.8</zk.version>
     </properties>
 
     <scm>
-        <url>https://github.com/ijson/in-rest-proxy</url>
-        <connection>scm:git:https://github.com/ijson/in-rest-proxy.git</connection>
-        <developerConnection>scm:git:https://github.com/ijson/in-rest-proxy.git</developerConnection>
+        <url>https://gitee.com/ijson/in-rest-proxy</url>
+        <connection>scm:git:https://gitee.com/ijson/in-rest-proxy.git</connection>
+        <developerConnection>scm:git:https://gitee.com/ijson/in-rest-proxy.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -215,7 +215,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
                 <configuration>
-                    <tagBase>https://github.com/ijson/in-rest-proxy/tags/</tagBase>
+                    <tagBase>https://gitee.com/ijson/in-rest-proxy/tags</tagBase>
                 </configuration>
             </plugin>
             <plugin>
