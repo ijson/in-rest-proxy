@@ -1,4 +1,7 @@
+# 因github国内无法正常使用 本项目废弃,该项目被迁移至:https://gitee.com/ijson/in-rest-proxy, 感谢各位支持
+
 # in-restful ![构建状态](https://travis-ci.org/gyk001/beetl2.0.svg)
+
 
 http://www.ijson.com/
 
